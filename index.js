@@ -109,7 +109,7 @@ function getSessionId(cb) {
         page.open('https://soundcloud.com/search/sounds?q=deep%20house').then(async (status, body) => {
             phantom.close(phInstance, page, () => {})
             if (Object.keys(loginData).length)
-            	console.log(defaults.name + ' - Extracter key for api')
+            	console.log(defaults.name + ' - Extracted key for api')
         }, function(err) {
         	console.log(err)
             phantom.close(phInstance, page, () => {})
