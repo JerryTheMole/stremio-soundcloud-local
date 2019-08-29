@@ -72,13 +72,17 @@ function toStream(reqId) {
 }
 
 function getSessionId(cb) {
+
 	phantom.load({
+		polyfill: true,
 	    clearMemory: true,
 	    agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
 	}, null, null, function(phInstance, page) {
 
 		page.on('onResourceRequested', function(req, netReq) {
+
 			let matches
+
 			if (!loginData.client_id && req.url.includes('?client_id=')) {
 				matches = req.url.match(/\?client_id=[a-zA-Z0-9]+/gm)
 				if ((matches || []).length)
